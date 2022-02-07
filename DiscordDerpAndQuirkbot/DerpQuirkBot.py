@@ -212,4 +212,4 @@ async def test(ctx):
     for i in userList:
         await ctx.send(i)
 
-bot.run("OTM1NzUxMjcxMDE5ODcyMzU2.YfDMSA.-1eUMzceijLoDODcGzJ-_4VDYHk")
+bot.run("{Insert bot token here}")
