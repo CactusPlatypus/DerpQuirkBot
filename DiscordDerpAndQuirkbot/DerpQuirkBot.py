@@ -123,29 +123,6 @@ async def message(ctx, user:discord.Member, *, message=None):
     embed = getQuirk(user)
     await user.send(embed = embed)
 
-@bot.command(name = "StartGame.")
-async def sendMessage(ctx):
-
-    fileraw = open(fileName, 'r')
-    quirks = fileraw.readlines() 
-
-    for i in userList:
-        chosen_Color = random.choice(colors)
-        chosen_Quirk = "Goblin - Be a Goblin"
-        embed = discord.Embed(title=chosen_Quirk)
-        embed.title = "Your Quirk Or Derp"
-        embed.description = chosen_Quirk
-        embed.color = chosen_Color
-        await i.send(embed = embed)
-
-    fileraw.close()
-
-@bot.command(name = "StartGameSame")
-async def sendMessage(ctx):
-    for i in userList:
-        
-        await i.send(embed = getQuirk(i))
-
 def getDerp():
     fileraw = open(derpFile, 'r')
     derps = fileraw.readlines() 
@@ -171,8 +148,6 @@ def getDerp():
     return derp
     
 
-
-
 def getQuirk(user):
     fileraw = open(fileName, 'r')
     quirks = fileraw.readlines() 
@@ -180,11 +155,11 @@ def getQuirk(user):
    
    
     if (GetTarget in chosen_Quirk):
-        userList.remove(user)
         Target = random.choice(userList)
-        userList.append(Target)
+        while (Target == user):
+            Target = random.choice(userList)
 
-    chosen_Quirk = chosen_Quirk.replace("Target", user.name)
+    chosen_Quirk = chosen_Quirk.replace("Target", Target.name)
     
     if ("TRIGGER" in chosen_Quirk):
         global triggerQuirk 
@@ -209,7 +184,11 @@ async def test(ctx):
 @bot.command(name = "Party")
 async def test(ctx):
     await ctx.send("Current Party:")
+    PartyText = ""
     for i in userList:
-        await ctx.send(i)
+        PartyText += i + "\n"
 
-bot.run("{Insert bot token here}")
+       
+    await ctx.send(PartyText)
+
+bot.run("OTM1NzUxMjcxMDE5ODcyMzU2.YfDMSA.Xk2AEV8urVl7eilaqPevyU5C_5E")
