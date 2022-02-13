@@ -182,9 +182,9 @@ def getQuirk(user):
     if (GetTarget in chosen_Quirk):
         userList.remove(user)
         Target = random.choice(userList)
-        userList.append(Target)
+        userList.append(user)
 
-    chosen_Quirk = chosen_Quirk.replace("Target", user.name)
+    chosen_Quirk = chosen_Quirk.replace("Target", Target.name)
     
     if ("TRIGGER" in chosen_Quirk):
         global triggerQuirk 
@@ -211,5 +211,4 @@ async def test(ctx):
     await ctx.send("Current Party:")
     for i in userList:
         await ctx.send(i)
-
-bot.run("{Insert bot token here}")
+bot.run("TOKEN GOES HERE")
