@@ -183,8 +183,7 @@ def getQuirk(user):
         userList.remove(user)
         Target = random.choice(userList)
         userList.append(user)
-
-    chosen_Quirk = chosen_Quirk.replace("Target", Target.name)
+        chosen_Quirk = chosen_Quirk.replace("Target", Target.name)
     
     if ("TRIGGER" in chosen_Quirk):
         global triggerQuirk 
