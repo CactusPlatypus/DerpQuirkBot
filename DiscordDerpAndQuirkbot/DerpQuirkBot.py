@@ -158,8 +158,7 @@ def getQuirk(user):
         Target = random.choice(userList)
         while (Target == user):
             Target = random.choice(userList)
-
-    chosen_Quirk = chosen_Quirk.replace("Target", Target.name)
+        chosen_Quirk = chosen_Quirk.replace("Target", Target.name)
     
     if ("TRIGGER" in chosen_Quirk):
         global triggerQuirk 
